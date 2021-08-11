@@ -1,0 +1,227 @@
+<meta charset="UTF-8">
+<link rel="icon" href="data:image/x-icon;base64,">
+<title>Application Title</title>
+<link rel="stylesheet" href="app/styles/app-style.css">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Wellkom | Be Well - Perform Well - Live Well Longer</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="app/styles/newcss.css">
+<link rel="stylesheet" href="app/styles/bootstrap.min.css">
+<link rel="stylesheet" href="app/styles/bootstrap-theme.min.css">
+<link rel="stylesheet" href="app/styles/fontAwesome.css">
+<link rel="stylesheet" href="app/styles/light-box.css">
+<link rel="stylesheet" href="app/styles/owl-carousel.css">
+<link rel="stylesheet" href="app/styles/templatemo-style.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>
+<script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<div class="page-content">
+ <section id="video" class="content-section">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <h1>Managing your time <em>well at work</em></h1>
+                        </div>
+                        <div class="text-content">
+                            <div class="section-heading">
+                            <ul>
+                            <li>You can also devise creative ways of restructuring your concept of time at work.
+                                Purposely try to find ways to practise the skills of patient behaviour that suits you.
+                                Here are some ideas to get you started: </li>
+                            <li> If you arrive at your office in the mornings and find yourself rushing, compulsively
+                                going through incoming e-mails, checking for messages, you can make a
+                                conscious effort to be less driven. </li>
+                            <li>For example delay opening up your e-mails for a time, perhaps even until just
+                                after lunch unless to do so would cause a real disturbance to your work
+                                performance not just a perceived one. So, if longer delays are not possible, try
+                                delays of about 15 minutes.</li>
+                            <li>Make this a regular habit and it will enable you to break free from time-obsessive
+                                patterns. This behaviour will enable you to get more of a sense of choosing what
+                                to do rather than compulsively having to do it. Then you can relax more during
+                                the work and still be efficient. </li>
+                            <li>Make sure that you regularly take your lunch break. Time how long you require to
+                                eat a midday meal and then deliberately order the same meal the following week
+                                and spend twice the time to eat it</li>
+                            <li>If you catch yourself looking at the watch constantly, commit yourself to writing “I
+                                don't have to reassure myself about the time every 2 minutes” and write that 30
+                                times. </li>
+                            <li>Learn to prioritise, get into the routine of asking yourself, whether a specific piece
+                                of work really has to be dealt with immediately. You can still choose to do it but
+                                you don’t have to do it now, so sometimes choose not to do it, and schedule it for
+                                later. </li>
+                            <li> Recognise and tell yourself that much of your eagerness and thoughts such as “I
+                                must act immediately. I have to do it now, later will never do” can be challenged.
+                                These responses have been learnt by you. They have grown out of an
+                                unconscious conditioning to attend to everything at once as if it were of the
+                                utmost importance. </li>
+                            <p>Which skills of patient behaviour are you going to practise at your next day
+                                of work? <button  style="background-color: transparent;border:none;" id="new1btn1"><i class="fa fa-microphone" aria-hidden="true"></i></button></p>
+                                <div id="new1column1" style="display:none">
+    <table  width="100%">
+      <tr>
+        <td><input id="subscriptionKey" type="hidden" type="text" size="40" value="bea8ac191ce041ecbcabc85e062630f5"></td>
+      </tr>
+      <tr>
+        <td><input type="hidden" id="serviceRegion" type="text" size="40" value="westeurope"></td>
+      </tr>
+      
+
+    </table>
+  </div>
+<form>
+<textarea  id="new1txt1" name="text" cols="100" rows="10" class="form-control" ></textarea>
+</form>
+<p>When else do you feel rushed at work? How could you slow yourself down? <button  style="background-color: transparent;border:none;" id="new1btn2"><i class="fa fa-microphone" aria-hidden="true"></i></button></p>
+<div id="new1column2" style="display:none">
+    <table  width="100%">
+      <tr>
+        <td><input id="subscriptionKey" type="hidden" type="text" size="40" value="bea8ac191ce041ecbcabc85e062630f5"></td>
+      </tr>
+      <tr>
+        <td><input type="hidden" id="serviceRegion" type="text" size="40" value="westeurope"></td>
+      </tr>
+      
+
+    </table>
+  </div>
+<form>
+<textarea  id="new1txt2" name="text" cols="100" rows="10" class="form-control" ></textarea>
+</form>
+                            </ul>         
+            </section>       
+</div>
+<script>
+
+    // status fields and start button in UI
+
+    var new1txt1,new1txt2;
+
+    var new1btn1,new1btn2;
+
+    // subscription key and region for speech services.
+    var subscriptionKey, serviceRegion, languageTargetOptions, languageSourceOptions;
+    var SpeechSDK;
+    var recognizerone;
+
+
+      new1btn1 = document.getElementById("new1btn1");
+      new1btn2 = document.getElementById("new1btn2");
+
+
+      subscriptionKey = document.getElementById("subscriptionKey");
+      serviceRegion = document.getElementById("serviceRegion");
+
+
+      new1txt1 = document.getElementById("new1txt1");
+      new1txt2 = document.getElementById("new1txt2");
+
+
+
+
+
+new1btn1.addEventListener("click", function () {
+        new1btn1.disabled = true;
+        new1btn1.style.color="red";
+        new1txt1.innerHTML = "";
+
+        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+          alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+          new1btn1.disabled = false;
+          return;
+        }
+        var speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+
+        speechConfig.speechRecognitionLanguage = "en-US";
+        let language = "en"
+        speechConfig.addTargetLanguage(language)
+
+        var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+        recognizerone = new SpeechSDK.TranslationRecognizer(speechConfig, audioConfig);
+
+        recognizerone.recognizeOnceAsync(
+          function (result) {
+            new1btn1.disabled = false;
+            new1btn1.style.color="black";
+            let translation = result.translations.get(language);
+            window.console.log(translation);
+            new1txt1.innerHTML += translation;
+
+            recognizerone.close();
+            recognizerone = undefined;
+          },
+          function (err) {
+            new1btn1.disabled = false;
+            new1btn1.style.color="black";
+            new1txt1.innerHTML += err;
+            window.console.log(err);
+
+            recognizerone.close();
+            recognizerone = undefined;
+          });
+      });
+new1btn2.addEventListener("click", function () {
+        new1btn2.disabled = true;
+        new1btn2.style.color="red";
+        new1txt2.innerHTML = "";
+
+        if (subscriptionKey.value === "" || subscriptionKey.value === "subscription") {
+          alert("Please enter your Microsoft Cognitive Services Speech subscription key!");
+          new1btn2.disabled = false;
+          return;
+        }
+        var speechConfig = SpeechSDK.SpeechTranslationConfig.fromSubscription(subscriptionKey.value, serviceRegion.value);
+
+        speechConfig.speechRecognitionLanguage = "en-US";
+        let language = "en"
+        speechConfig.addTargetLanguage(language)
+
+        var audioConfig  = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput();
+        recognizerone = new SpeechSDK.TranslationRecognizer(speechConfig, audioConfig);
+
+        recognizerone.recognizeOnceAsync(
+          function (result) {
+            new1btn2.disabled = false;
+            new1btn2.style.color="black";
+            let translation = result.translations.get(language);
+            window.console.log(translation);
+            new1txt2.innerHTML += translation;
+
+            recognizerone.close();
+            recognizerone = undefined;
+          },
+          function (err) {
+            new1btn2.disabled = false;
+            new1btn2.style.color="black";
+            new1txt2.innerHTML += err;
+            window.console.log(err);
+
+            recognizerone.close();
+            recognizerone = undefined;
+          });
+      });
+
+
+
+
+      if (!!window.SpeechSDK) {
+        SpeechSDK = window.SpeechSDK;
+        new1btn1.disabled=false;
+        new1btn1.style.color="black";
+        new1btn2.disabled=false;
+        new1btn2.style.color="black";
+
+
+        document.getElementById('new1column1').style.display = 'block';
+        document.getElementById('new1column2').style.display = 'block';
+
+
+        document.getElementById('warning').style.display = 'none';
+      }
+
+  </script>
